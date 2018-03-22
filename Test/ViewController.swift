@@ -8,17 +8,35 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController,UITextFieldDelegate {
 
+    @IBAction func btn(_ sender: Any) {
+        label.text="Hello "+text.text!
+        text.text=""
+        text.resignFirstResponder()
+    }
+    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var text: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        text.delegate=self
+    text.clearButtonMode=UITextFieldViewMode.whileEditing
+        text.placeholder="입력하세요"
+        
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        text.resignFirstResponder()
+    }
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        view.backgroundColor=UIColor.blue
+        
+        return true
+    }
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
+        view.backgroundColor=UIColor.yellow
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
 
 }
