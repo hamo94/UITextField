@@ -25,6 +25,10 @@ class ViewController: UIViewController,UITextFieldDelegate {
         text.placeholder="입력하세요"
         
     }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        text.resignFirstResponder()
+        return true
+    }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         text.resignFirstResponder()
     }
@@ -34,7 +38,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
         return true
     }
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
-        view.backgroundColor=UIColor.yellow
+        view.backgroundColor=UIColor.red
     }
 
 
